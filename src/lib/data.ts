@@ -159,7 +159,7 @@ export const projects: Project[] = [
     impact: 'Reserved for the full interactive portfolio build and submission case study.',
     demo: 'https://github.com/sollylovessolly/portfolio-svelte',
     repo: 'https://github.com/sollylovessolly/portfolio-svelte',
-    screenshot: '/projects/typed-dashboard.svg',
+    screenshot: '/projects/portfolio.png',
   },
 ]
 

@@ -298,7 +298,7 @@
           <p><span></span> SYSTEM STATUS: OPERATIONAL</p>
           <h2>PROJECT REPOSITORY</h2>
           <p>
-            Compiled artifacts and architectural documentation for high-priority initiatives. Filtered by
+            Compiled artifacts and architectural documentation for HNG cohort 14. Filtered by
             stack-integrity and deployment efficiency.
           </p>
         </div>
