@@ -18,6 +18,7 @@
     {#if project.accent === 'gold'}<Lock size={22} aria-hidden="true" />{/if}
   </header>
   <button class="project-visual" type="button" on:click={() => onOpen(project)}>
+    <img src={project.screenshot} alt={`${project.title} screenshot`} loading="lazy" />
     <span>{project.file}</span>
     <i></i>
   </button>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" role="img" aria-labelledby="title desc">
+  <title id="title">Solly profile placeholder</title>
+  <desc id="desc">Cyber terminal profile image placeholder for Solly.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#073236"/>
+      <stop offset="0.55" stop-color="#111"/>
+      <stop offset="1" stop-color="#31112b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="34%" r="54%">
+      <stop stop-color="#09e7f0" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#09e7f0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="900" fill="url(#bg)"/>
+  <rect width="800" height="900" fill="url(#glow)"/>
+  <g fill="none" stroke="#09e7f0" stroke-opacity="0.28">
+    <path d="M70 120h660v660H70z"/>
+    <path d="M135 185h530v530H135z"/>
+    <path d="M400 120v660M70 450h660"/>
+  </g>
+  <circle cx="400" cy="330" r="120" fill="#141f21" stroke="#09e7f0" stroke-width="5"/>
+  <path d="M190 735c42-138 137-211 210-211s168 73 210 211" fill="#141f21" stroke="#ff4ad8" stroke-width="5"/>
+  <text x="400" y="830" fill="#09e7f0" font-family="Consolas, monospace" font-size="52" font-weight="700" text-anchor="middle">SOLLY</text>
+</svg>

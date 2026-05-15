@@ -1,13 +1,14 @@
 SYS_ARCH_v2.0.4 RESUME MANIFEST
 
-Name: Syah Markom
-Title: Frontend Architect / Svelte Interface Engineer
-Specialties: Svelte, TypeScript, GSAP motion systems, accessible UI, performance optimization
+Name: Solly
+Title: Frontend Developer Intern
+Specialties: React, Tailwind CSS, TypeScript, JavaScript, HTML, CSS, responsive UI, polished interfaces
 Contact: sollylovessolly@gmail.com
+LinkedIn: https://www.linkedin.com/in/oyindamola-solarin-b348ab3b6/
 Repository: https://github.com/sollylovessolly/portfolio-svelte
 
 Core Signals:
-- Builds interactive, production-grade frontend systems
-- Designs polished responsive experiences with strong visual direction
-- Optimizes for accessibility, reduced motion, and fast delivery
-- Ships clean component architecture and data-driven UI
+- Self-taught frontend developer focused on beautiful, user-friendly web interfaces
+- Builds responsive React and JavaScript projects
+- Improving clean code, UI design, and smooth frontend interactions
+- Open to frontend internship and job opportunities

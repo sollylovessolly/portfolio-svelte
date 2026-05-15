@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#120b12"/>
+  <rect x="70" y="66" width="760" height="388" fill="#151515" stroke="#ff4ad8"/>
+  <text x="110" y="132" fill="#ff4ad8" font-family="Consolas, monospace" font-size="38">JS_TOOLKIT</text>
+  <text x="110" y="210" fill="#ddd" font-family="Consolas, monospace" font-size="28">const ui = init();</text>
+  <text x="110" y="270" fill="#09e7f0" font-family="Consolas, monospace" font-size="28">validate(form);</text>
+  <rect x="110" y="330" width="620" height="20" fill="#ff4ad8"/>
+  <rect x="110" y="370" width="480" height="20" fill="#09e7f0"/>
+</svg>

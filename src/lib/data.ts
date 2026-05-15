@@ -2,7 +2,7 @@ export type Project = {
   id: string
   title: string
   file: string
-  category: 'svelte' | 'react' | 'systems'
+  category: 'typescript' | 'javascript' | 'react'
   status: string
   accent: 'cyan' | 'pink' | 'gold'
   description: string
@@ -11,6 +11,18 @@ export type Project = {
   impact: string
   demo: string
   repo: string
+  screenshot: string
+}
+
+export const profile = {
+  name: 'SOLLY',
+  displayName: 'Solly',
+  title: 'Frontend Developer Intern',
+  image: '/profile.svg',
+  linkedin: 'https://www.linkedin.com/in/oyindamola-solarin-b348ab3b6/',
+  email: 'sollylovessolly@gmail.com',
+  intro:
+    'Self-taught frontend developer focused on building beautiful, responsive, and user-friendly web interfaces with React, JavaScript, TypeScript, Tailwind CSS, HTML, and CSS.',
 }
 
 export const navItems = [
@@ -22,86 +34,91 @@ export const navItems = [
 
 export const projects: Project[] = [
   {
-    id: 'neural-dash',
-    title: 'NEURAL_DASH_v1',
-    file: 'quantum_engine.svelte',
-    category: 'svelte',
+    id: 'interface-lab',
+    title: 'INTERFACE_LAB',
+    file: 'polished_ui.tsx',
+    category: 'react',
     status: 'STABLE_DEPLOYED',
     accent: 'cyan',
     description:
-      'Operational analytics console with predictive cards, keyboard-first navigation, and animated data streams.',
-    stack: ['Svelte', 'TypeScript', 'GSAP', 'Charts'],
-    code: 'const init = async () => {\n  await core.boot();\n  return dash.mount();\n};',
-    impact: 'Improved operator scan speed by 42% with dense, readable status panels.',
+      'Responsive React interface focused on clean layout, polished micro-interactions, and friendly user experience.',
+    stack: ['React', 'TypeScript', 'Tailwind CSS'],
+    code: 'const buildUI = () => {\n  return <Interface polished />;\n};',
+    impact: 'Shows frontend growth through modern components, responsive layout, and careful visual rhythm.',
     demo: 'https://github.com/sollylovessolly/portfolio-svelte',
     repo: 'https://github.com/sollylovessolly/portfolio-svelte',
+    screenshot: '/projects/interface-lab.svg',
   },
   {
-    id: 'crypto-pane',
-    title: 'CRYPTO_PANE',
-    file: 'neural_link_dashboard.rs',
-    category: 'systems',
-    status: 'VAULTED_CRYPTO',
+    id: 'js-toolkit',
+    title: 'JS_TOOLKIT',
+    file: 'frontend_tools.js',
+    category: 'javascript',
+    status: 'ACTIVE_BUILD',
     accent: 'pink',
     description:
-      'Encrypted document workflow with vault states, audit logs, resilient form validation, and optimistic UI.',
-    stack: ['Rust', 'WASM', 'AES', 'Redis'],
-    code: 'struct Vault {\n  id: String,\n  key: Vec<u8>,\n}',
-    impact: 'Reduced payload handoff time while keeping user-visible security states explicit.',
+      'A JavaScript-focused project space for interactive UI experiments, DOM logic, validation, and smooth browser behavior.',
+    stack: ['JavaScript', 'HTML', 'CSS'],
+    code: 'function initApp() {\n  hydrateInteractions();\n  validateInputs();\n}',
+    impact: 'Demonstrates comfort with browser fundamentals and interaction engineering.',
     demo: 'https://github.com/sollylovessolly/portfolio-svelte',
     repo: 'https://github.com/sollylovessolly/portfolio-svelte',
+    screenshot: '/projects/js-toolkit.svg',
   },
   {
-    id: 'asset-compiler',
-    title: 'ASSET_COMPILER',
-    file: 'asset_compiler.ts',
-    category: 'svelte',
+    id: 'typed-dashboard',
+    title: 'TYPED_DASHBOARD',
+    file: 'dashboard_core.ts',
+    category: 'typescript',
     status: 'STABLE_DEPLOYED',
     accent: 'cyan',
     description:
-      'Automated build pipeline for media-heavy product pages with lazy assets and route-level chunking.',
-    stack: ['Vite', 'SvelteKit', 'Workers', 'R2'],
-    code: '$ npm run build --production\n# assets sealed\n# bundles verified',
-    impact: 'Raised Lighthouse performance from 71 to 98 on a media-rich launch page.',
+      'TypeScript dashboard concept with reusable data structures, typed project records, and accessible UI states.',
+    stack: ['TypeScript', 'Vite', 'CSS'],
+    code: 'type Project = {\n  title: string;\n  stack: string[];\n};',
+    impact: 'Highlights cleaner code habits and stronger component/data separation.',
     demo: 'https://github.com/sollylovessolly/portfolio-svelte',
     repo: 'https://github.com/sollylovessolly/portfolio-svelte',
+    screenshot: '/projects/typed-dashboard.svg',
   },
   {
-    id: 'stealth-api',
-    title: 'STEALTH_API',
-    file: 'ghost_mod.ts',
+    id: 'cute-ui-kit',
+    title: 'CUTE_UI_KIT',
+    file: 'soft_components.jsx',
     category: 'react',
     status: 'CLOAKED_READY',
     accent: 'gold',
     description:
-      'Proxy-aware API interface with request replay, auth diagnostics, and live environment switching.',
-    stack: ['React', 'Node', 'Proxy', 'Auth'],
-    code: "export const load = () => {\n  // hidden logic\n  fetch('/api/ghost');\n};",
-    impact: 'Made integration debugging measurable with timeline traces and failure fingerprints.',
+      'A modern component kit direction for cute, clean, good-looking interfaces with useful interaction states.',
+    stack: ['React', 'Tailwind CSS', 'CSS'],
+    code: 'export function Card() {\n  return <section className="soft-ui" />;\n}',
+    impact: 'Captures the visual direction Solly wants to be known for: beautiful and useful interfaces.',
     demo: 'https://github.com/sollylovessolly/portfolio-svelte',
     repo: 'https://github.com/sollylovessolly/portfolio-svelte',
+    screenshot: '/projects/cute-ui-kit.svg',
   },
 ]
 
 export const skills = [
-  { label: 'TypeScript', level: 95, icon: 'JS', family: 'Neural Arch' },
-  { label: 'Svelte Motion', level: 91, icon: '{}', family: 'Visual Engine' },
-  { label: 'Interface Systems', level: 88, icon: 'UI', family: 'Visual Engine' },
-  { label: 'Performance', level: 94, icon: 'CPU', family: 'Neural Arch' },
-  { label: 'Accessibility', level: 89, icon: 'A11Y', family: 'Neural Arch' },
+  { label: 'React', level: 84, icon: 'RX', family: 'Frontend Core' },
+  { label: 'JavaScript', level: 86, icon: 'JS', family: 'Frontend Core' },
+  { label: 'TypeScript', level: 74, icon: 'TS', family: 'Typed Systems' },
+  { label: 'Tailwind CSS', level: 82, icon: 'TW', family: 'Visual Engine' },
+  { label: 'HTML / CSS', level: 90, icon: 'UI', family: 'Visual Engine' },
+  { label: 'Python Basics', level: 48, icon: 'PY', family: 'Other Tools' },
 ]
 
 export const quests = [
   {
-    title: 'Senior Protocol Architect @ CypherNux',
-    date: '2022 - Present',
-    body: 'Architecting distributed microservices and high-fidelity frontends using Svelte, TypeScript, and motion systems.',
+    title: 'Frontend Developer Intern',
+    date: 'Current',
+    body: 'Building responsive web interfaces, writing cleaner code, and improving UI polish through focused frontend projects.',
     state: 'IN_PROGRESS',
   },
   {
-    title: 'Systems Engineer @ Biologic',
-    date: '2021 - 2022',
-    body: 'Developed real-time monitoring dashboards for synthetic tissue growth arrays. Optimized render timing by 40%.',
+    title: 'Self-taught Frontend Growth Track',
+    date: 'Ongoing',
+    body: 'Sharpening React, JavaScript, TypeScript, Tailwind CSS, HTML, CSS, and design judgment through public GitHub projects.',
     state: 'COMPLETED',
   },
 ]

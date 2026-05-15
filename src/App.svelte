@@ -25,7 +25,7 @@
   } from 'lucide-svelte'
   import Meter from './lib/Meter.svelte'
   import ProjectCard from './lib/ProjectCard.svelte'
-  import { commands, navItems, projects, quests, skills, type Project } from './lib/data'
+  import { commands, navItems, profile, projects, quests, skills, type Project } from './lib/data'
 
   let activeSection = 'root'
   let activeFilter: 'all' | Project['category'] = 'all'
@@ -39,6 +39,7 @@
   let email = ''
   let message = ''
   let formState = 'READY_FOR_UPLINK'
+  const projectFilters: Array<'all' | Project['category']> = ['all', 'typescript', 'javascript', 'react']
 
   $: filteredProjects =
     activeFilter === 'all' ? projects : projects.filter((project) => project.category === activeFilter)
@@ -172,7 +173,7 @@
   <title>SYS_ARCH_v2.0.4 | Svelte Developer Portfolio</title>
   <meta
     name="description"
-    content="Interactive cyber-terminal developer portfolio built with Svelte, GSAP, accessible controls, project filtering, command palette, and contact uplink."
+    content="Solly's interactive frontend developer portfolio built with Svelte, GSAP, accessible controls, project filtering, command palette, and contact uplink."
   />
 </svelte:head>
 
@@ -212,10 +213,9 @@
     <section id="root" class="section hero-section">
       <div class="hero-copy">
         <p class="eyebrow reveal"><span></span> PROTOCOL: PORTFOLIO_INITIATED</p>
-        <h1 class="hero-title reveal">SYAH_MARKOM</h1>
+        <h1 class="hero-title reveal">{profile.name}</h1>
         <p class="intro reveal">
-          Full-stack architect specializing in <strong>Cyber-Protocol Engineering</strong>. Designing scalable digital
-          neural networks and high-fidelity interface systems.
+          {profile.intro} Currently sharpening cleaner code, better interfaces, and smooth, polished frontend experiences.
         </p>
 
         <div class="hero-panels reveal">
@@ -240,9 +240,9 @@
               <Database size={15} aria-hidden="true" />
             </div>
             <div class="inventory">
+              <span>TS</span>
               <span>JS</span>
-              <Code2 size={21} aria-label="Code systems" />
-              <Cpu size={21} aria-label="Component architecture" />
+              <span>RX</span>
             </div>
           </article>
         </div>
@@ -259,6 +259,10 @@
             <Code2 size={17} aria-hidden="true" />
             GitHub
           </a>
+          <a class="ghost-link" href={profile.linkedin} target="_blank" rel="noreferrer">
+            <ExternalLink size={17} aria-hidden="true" />
+            LinkedIn
+          </a>
         </div>
       </div>
 
@@ -267,8 +271,8 @@
         <div class="portrait-grid">
           <div class="orbit-frame"></div>
           <div class="scan-line"></div>
-          <p>TARGET_ID: SM_X99</p>
-          <p>THREAT_LEVEL: OMEGA</p>
+          <p>TARGET_ID: SOLLY</p>
+          <p>ROLE: FRONTEND_DEV</p>
           <span>SCANNING_BIOMETRICS... 100%</span>
         </div>
         <div class="corner bottom"></div>
@@ -296,7 +300,7 @@
 
       <div class="filter-bar reveal" aria-label="Project filters">
         <span>FILTERS:</span>
-        {#each ['all', 'svelte', 'react', 'systems'] as filter}
+        {#each projectFilters as filter}
           <button
             type="button"
             class:active={activeFilter === filter}
@@ -317,21 +321,22 @@
     <section id="lib" class="section profile-section">
       <aside class="profile-card reveal">
         <div class="avatar-frame">
-          <span>LEVEL 42 ARCHITECT</span>
+          <img src={profile.image} alt={`${profile.displayName} profile`} />
+          <span>FRONTEND INTERN</span>
         </div>
-        <h2>ALEX_VANCE</h2>
-        <p>Senior Full-Stack Combatant // Neural Net Specialization</p>
+        <h2>{profile.name}</h2>
+        <p>{profile.title} // Beautiful, responsive interface systems</p>
         <div class="stat">
-          <Meter label="INTELLIGENCE (HP)" value="942 / 1000" level={94} />
+          <Meter label="FRONTEND GROWTH" value="860 / 1000" level={86} />
         </div>
         <div class="stat">
-          <Meter label="CREATIVITY (MP)" value="750 / 800" level={88} variant="pink" />
+          <Meter label="UI POLISH" value="820 / 1000" level={82} variant="pink" />
         </div>
         <div class="mini-stats">
-          <span>STR <strong>18</strong></span>
-          <span>DEX <strong>19</strong></span>
-          <span>CON <strong>17</strong></span>
-          <span>CHA <strong>15</strong></span>
+          <span>REACT <strong>84</strong></span>
+          <span>JS <strong>86</strong></span>
+          <span>TS <strong>74</strong></span>
+          <span>CSS <strong>90</strong></span>
         </div>
       </aside>
 
@@ -470,7 +475,10 @@
     <p>{selectedProject.file}</p>
     <h2 id="modal-title">{selectedProject.title}</h2>
     <p>{selectedProject.description}</p>
-    <div class="modal-visual"><span>{selectedProject.impact}</span></div>
+    <div class="modal-visual">
+      <img src={selectedProject.screenshot} alt={`${selectedProject.title} screenshot`} />
+      <span>{selectedProject.impact}</span>
+    </div>
     <div class="tags">
       {#each selectedProject.stack as tech}
         <span>{tech}</span>
