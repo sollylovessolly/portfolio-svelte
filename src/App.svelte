@@ -41,6 +41,7 @@
   let message = ''
   let formState = 'READY_FOR_UPLINK'
   let isSending = false
+  let hasSubmittedContact = false
   const projectFilters: Array<'all' | Project['category']> = ['all', 'typescript', 'javascript', 'react']
 
   $: filteredProjects =
@@ -71,52 +72,38 @@
       .replace(/javascript:/gi, '')
       .trim()
 
-  const submitPacket = async () => {
+  const submitPacket = (event: SubmitEvent) => {
     const safeName = sanitize(name)
     const safeEmail = sanitize(email)
     const safeMessage = sanitize(message)
     const safeProtocol = sanitize(protocol)
 
     if (!safeName || !safeEmail.includes('@') || safeMessage.length < 12) {
+      event.preventDefault()
       formState = 'PACKET_REJECTED_VALIDATION'
       return
     }
 
+    name = safeName
+    email = safeEmail
+    message = safeMessage
+    protocol = safeProtocol
     isSending = true
+    hasSubmittedContact = true
     formState = 'TRANSMITTING_PACKET'
+  }
 
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/esthersolly03@gmail.com', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: safeName,
-          email: safeEmail,
-          protocol: safeProtocol,
-          message: safeMessage,
-          _subject: `Portfolio uplink from ${safeName}`,
-          _template: 'table',
-          _captcha: 'false',
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Transmission failed')
-      }
-
+  const finishContactSubmit = () => {
+    if (!hasSubmittedContact) return
+    isSending = false
+    formState = 'TRANSMISSION_DELIVERED'
+    hasSubmittedContact = false
+    setTimeout(() => {
       name = ''
       email = ''
       message = ''
       protocol = 'GENERAL_INQUIRY'
-      formState = 'TRANSMISSION_DELIVERED'
-    } catch {
-      formState = 'TRANSMISSION_FAILED_TRY_AGAIN'
-    } finally {
-      isSending = false
-    }
+    }, 350)
   }
 
   const toggleTheme = () => {
@@ -445,7 +432,18 @@
         </div>
       </div>
 
-      <form class="contact-panel reveal" on:submit|preventDefault={submitPacket}>
+      <iframe class="contact-frame" name="contact-frame" title="Contact form delivery status" on:load={finishContactSubmit}></iframe>
+
+      <form
+        class="contact-panel reveal"
+        action="https://formsubmit.co/esthersolly03@gmail.com"
+        method="POST"
+        target="contact-frame"
+        on:submit={submitPacket}
+      >
+        <input type="hidden" name="_subject" value="Portfolio uplink from Solly's portfolio" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
         <h2>CONTACT PORTAL</h2>
         <p>Encrypted packet delivery system. All transmissions are logged and tracked.</p>
         <div class="form-grid">
@@ -460,7 +458,7 @@
         </div>
         <label>
           PROTOCOL_TYPE
-          <select bind:value={protocol} aria-label="Protocol type">
+          <select bind:value={protocol} name="protocol" aria-label="Protocol type">
             <option>GENERAL_INQUIRY</option>
             <option>PROJECT_COLLAB</option>
             <option>MISSION_BRIEF</option>
