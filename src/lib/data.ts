@@ -33,8 +33,8 @@ export const projects: Project[] = [
     stack: ['Svelte', 'TypeScript', 'GSAP', 'Charts'],
     code: 'const init = async () => {\n  await core.boot();\n  return dash.mount();\n};',
     impact: 'Improved operator scan speed by 42% with dense, readable status panels.',
-    demo: 'https://example.com',
-    repo: 'https://github.com/sollylovessolly',
+    demo: 'https://github.com/sollylovessolly/portfolio-svelte',
+    repo: 'https://github.com/sollylovessolly/portfolio-svelte',
   },
   {
     id: 'crypto-pane',
@@ -48,8 +48,8 @@ export const projects: Project[] = [
     stack: ['Rust', 'WASM', 'AES', 'Redis'],
     code: 'struct Vault {\n  id: String,\n  key: Vec<u8>,\n}',
     impact: 'Reduced payload handoff time while keeping user-visible security states explicit.',
-    demo: 'https://example.com',
-    repo: 'https://github.com/sollylovessolly',
+    demo: 'https://github.com/sollylovessolly/portfolio-svelte',
+    repo: 'https://github.com/sollylovessolly/portfolio-svelte',
   },
   {
     id: 'asset-compiler',
@@ -63,8 +63,8 @@ export const projects: Project[] = [
     stack: ['Vite', 'SvelteKit', 'Workers', 'R2'],
     code: '$ npm run build --production\n# assets sealed\n# bundles verified',
     impact: 'Raised Lighthouse performance from 71 to 98 on a media-rich launch page.',
-    demo: 'https://example.com',
-    repo: 'https://github.com/sollylovessolly',
+    demo: 'https://github.com/sollylovessolly/portfolio-svelte',
+    repo: 'https://github.com/sollylovessolly/portfolio-svelte',
   },
   {
     id: 'stealth-api',
@@ -78,8 +78,8 @@ export const projects: Project[] = [
     stack: ['React', 'Node', 'Proxy', 'Auth'],
     code: "export const load = () => {\n  // hidden logic\n  fetch('/api/ghost');\n};",
     impact: 'Made integration debugging measurable with timeline traces and failure fingerprints.',
-    demo: 'https://example.com',
-    repo: 'https://github.com/sollylovessolly',
+    demo: 'https://github.com/sollylovessolly/portfolio-svelte',
+    repo: 'https://github.com/sollylovessolly/portfolio-svelte',
   },
 ]
 

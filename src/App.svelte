@@ -68,7 +68,7 @@
 
     const subject = encodeURIComponent(`Portfolio uplink from ${safeName}`)
     const body = encodeURIComponent(`${safeMessage}\n\nReturn uplink: ${safeEmail}`)
-    window.location.href = `mailto:hello@example.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:sollylovessolly@gmail.com?subject=${subject}&body=${body}`
     formState = 'TRANSMISSION_READY'
   }
 
@@ -253,7 +253,7 @@
           <a class="primary-link" href="#src" on:click|preventDefault={() => scrollToSection('src')}>
             Initialize mission
           </a>
-          <a class="ghost-link" href="/resume.pdf" download>
+          <a class="ghost-link" href="/resume.txt" download>
             <Download size={17} aria-hidden="true" />
             Download manifest
           </a>
