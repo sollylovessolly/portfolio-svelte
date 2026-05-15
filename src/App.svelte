@@ -44,6 +44,18 @@
   $: filteredProjects =
     activeFilter === 'all' ? projects : projects.filter((project) => project.category === activeFilter)
 
+  $: if (activeFilter && typeof window !== 'undefined') {
+    tick().then(() => {
+      if (!reducedMotion) {
+        gsap.fromTo(
+          '.project-grid .project-card',
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 0.36, stagger: 0.04, ease: 'power2.out' },
+        )
+      }
+    })
+  }
+
   const scrollToSection = async (id: string) => {
     activeSection = id
     commandOpen = false
@@ -251,7 +263,7 @@
           <a class="primary-link" href="#src" on:click|preventDefault={() => scrollToSection('src')}>
             Initialize mission
           </a>
-          <a class="ghost-link" href="/resume.txt" download>
+          <a class="ghost-link" href="/resume.pdf" download>
             <Download size={17} aria-hidden="true" />
             Download manifest
           </a>
@@ -378,9 +390,9 @@
         <section class="module achievements reveal">
           <h2>COLLECTED_ACHIEVEMENTS</h2>
           <div>
-            <article><Trophy size={22} /><span>AWARDED 2023</span><strong>Open Source Pioneer</strong></article>
-            <article><Activity size={22} /><span>UNLOCKED 2024</span><strong>Optimization Master</strong></article>
-            <article><Lock size={22} /><span>LOCKED</span><strong>CTO Ascension</strong></article>
+            <article><Trophy size={22} /><span>GRADUATED</span><strong>Engineering Graduate</strong></article>
+            <article><Activity size={22} /><span>UNLOCKED</span><strong>Optimization Master</strong></article>
+            <article><Lock size={22} /><span>LOCKED</span><strong>Stage 6 HNG</strong></article>
           </div>
         </section>
       </div>

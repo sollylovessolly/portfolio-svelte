@@ -7,7 +7,7 @@
   export let onOpen: (project: Project) => void = () => undefined
 </script>
 
-<article class={`project-card ${project.accent} reveal`} style={`--delay:${index * 70}ms`}>
+<article class={`project-card ${project.accent}`} style={`--delay:${index * 70}ms`}>
   <header>
     <div>
       <p>PROJ::{project.id.toUpperCase()}</p>
