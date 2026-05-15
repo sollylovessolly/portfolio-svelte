@@ -11,6 +11,7 @@
     Download,
     ExternalLink,
     Keyboard,
+    Lock,
     Mail,
     Moon,
     Rocket,
