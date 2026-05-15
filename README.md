@@ -16,7 +16,7 @@ npm run build
 - `src/lib/ProjectCard.svelte` and `src/lib/Meter.svelte` provide reusable UI building blocks for project artifacts and telemetry meters.
 - `src/lib/data.ts` keeps project, skill, quest, nav, and command data separate from presentation.
 - `src/style.css` contains the terminal design system, responsive layouts, focus states, motion fallbacks, and theme variables.
-- `public/resume.txt` provides a real downloadable manifest so the resume CTA does not point at a missing file.
+- `public/resume.pdf` is used by the resume/download CTA. `public/resume.txt` is kept as a lightweight text fallback.
 - `public/profile.svg` is the current profile placeholder. Replace it with your real photo, or add `public/profile.jpg` and update `profile.image` in `src/lib/data.ts`.
 - `public/projects/` contains project screenshot placeholders. Add your real screenshots there and update each project's `screenshot`, `demo`, and `repo` fields in `src/lib/data.ts`.
 
