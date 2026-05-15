@@ -20,7 +20,7 @@ export const profile = {
   title: 'Frontend Developer Intern',
   image: '/profile.png',
   linkedin: 'https://www.linkedin.com/in/oyindamola-solarin-b348ab3b6/',
-  email: 'sollylovessolly@gmail.com',
+  email: 'esthersolly03@gmail.com',
   intro:
     'Self-taught frontend developer focused on building beautiful, responsive, and user-friendly web interfaces with React, JavaScript, TypeScript, Tailwind CSS, HTML, and CSS.',
 }

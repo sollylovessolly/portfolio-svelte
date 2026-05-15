@@ -37,8 +37,10 @@
   let rootEl: HTMLElement
   let name = ''
   let email = ''
+  let protocol = 'GENERAL_INQUIRY'
   let message = ''
   let formState = 'READY_FOR_UPLINK'
+  let isSending = false
   const projectFilters: Array<'all' | Project['category']> = ['all', 'typescript', 'javascript', 'react']
 
   $: filteredProjects =
@@ -69,20 +71,52 @@
       .replace(/javascript:/gi, '')
       .trim()
 
-  const submitPacket = () => {
+  const submitPacket = async () => {
     const safeName = sanitize(name)
     const safeEmail = sanitize(email)
     const safeMessage = sanitize(message)
+    const safeProtocol = sanitize(protocol)
 
     if (!safeName || !safeEmail.includes('@') || safeMessage.length < 12) {
       formState = 'PACKET_REJECTED_VALIDATION'
       return
     }
 
-    const subject = encodeURIComponent(`Portfolio uplink from ${safeName}`)
-    const body = encodeURIComponent(`${safeMessage}\n\nReturn uplink: ${safeEmail}`)
-    window.location.href = `mailto:sollylovessolly@gmail.com?subject=${subject}&body=${body}`
-    formState = 'TRANSMISSION_READY'
+    isSending = true
+    formState = 'TRANSMITTING_PACKET'
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/esthersolly03@gmail.com', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: safeName,
+          email: safeEmail,
+          protocol: safeProtocol,
+          message: safeMessage,
+          _subject: `Portfolio uplink from ${safeName}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Transmission failed')
+      }
+
+      name = ''
+      email = ''
+      message = ''
+      protocol = 'GENERAL_INQUIRY'
+      formState = 'TRANSMISSION_DELIVERED'
+    } catch {
+      formState = 'TRANSMISSION_FAILED_TRY_AGAIN'
+    } finally {
+      isSending = false
+    }
   }
 
   const toggleTheme = () => {
@@ -426,7 +460,7 @@
         </div>
         <label>
           PROTOCOL_TYPE
-          <select aria-label="Protocol type">
+          <select bind:value={protocol} aria-label="Protocol type">
             <option>GENERAL_INQUIRY</option>
             <option>PROJECT_COLLAB</option>
             <option>MISSION_BRIEF</option>
@@ -438,7 +472,9 @@
         </label>
         <footer>
           <span><i></i> ENCRYPTION_ACTIVE: AES-256</span>
-          <button type="submit"><Send size={16} /> TRANSMIT_PACKET</button>
+          <button type="submit" disabled={isSending}>
+            <Send size={16} /> {isSending ? 'TRANSMITTING...' : 'TRANSMIT_PACKET'}
+          </button>
         </footer>
         <p class="form-state" role="status">{formState}</p>
       </form>

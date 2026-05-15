@@ -1110,6 +1110,11 @@ pre {
   letter-spacing: 0.14em;
 }
 
+.contact-panel button[type="submit"]:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
 .form-state {
   min-height: 20px;
   margin: 16px 0 0;
