@@ -13,6 +13,7 @@ npm run build
 ## Architecture
 
 - `src/App.svelte` owns the interactive shell, section navigation, command palette, modal project viewer, theme state, reduced-motion state, GSAP choreography, and contact form behavior.
+- `src/lib/ProjectCard.svelte` and `src/lib/Meter.svelte` provide reusable UI building blocks for project artifacts and telemetry meters.
 - `src/lib/data.ts` keeps project, skill, quest, nav, and command data separate from presentation.
 - `src/style.css` contains the terminal design system, responsive layouts, focus states, motion fallbacks, and theme variables.
 - `public/resume.txt` provides a real downloadable manifest so the resume CTA does not point at a missing file.

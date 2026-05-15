@@ -3,7 +3,6 @@
   import gsap from 'gsap'
   import {
     Activity,
-    Box,
     Cloud,
     Code2,
     Command,
@@ -12,19 +11,19 @@
     Download,
     ExternalLink,
     Keyboard,
-    Lock,
     Mail,
     Moon,
     Rocket,
     Search,
     Send,
-    Shield,
     Sun,
     Terminal,
     Trophy,
     X,
     Zap,
   } from 'lucide-svelte'
+  import Meter from './lib/Meter.svelte'
+  import ProjectCard from './lib/ProjectCard.svelte'
   import { commands, navItems, projects, quests, skills, type Project } from './lib/data'
 
   let activeSection = 'root'
@@ -224,10 +223,8 @@
               <span>CORE_VITALS</span>
               <Activity size={15} aria-hidden="true" />
             </div>
-            <span class="meter-label">HP <strong>100%</strong></span>
-            <div class="meter"><span style="width: 100%"></span></div>
-            <span class="meter-label">MP <strong>85%</strong></span>
-            <div class="meter pink"><span style="width: 85%"></span></div>
+            <Meter label="HP" value="100%" level={100} />
+            <Meter label="MP" value="85%" level={85} variant="pink" />
           </article>
 
           <button class="quest-button" type="button" on:click={() => scrollToSection('src')}>
@@ -244,7 +241,7 @@
             <div class="inventory">
               <span>JS</span>
               <Code2 size={21} aria-label="Code systems" />
-              <Box size={21} aria-label="Component architecture" />
+              <Cpu size={21} aria-label="Component architecture" />
             </div>
           </article>
         </div>
@@ -311,31 +308,7 @@
 
       <div class="project-grid">
         {#each filteredProjects as project, index (project.id)}
-          <article class={`project-card ${project.accent} reveal`} style={`--delay:${index * 70}ms`}>
-            <header>
-              <div>
-                <p>PROJ::{project.id.toUpperCase()}</p>
-                <h3>{project.title}</h3>
-              </div>
-              {#if project.accent === 'cyan'}<Box size={22} aria-hidden="true" />{/if}
-              {#if project.accent === 'pink'}<Shield size={22} aria-hidden="true" />{/if}
-              {#if project.accent === 'gold'}<Lock size={22} aria-hidden="true" />{/if}
-            </header>
-            <button class="project-visual" type="button" on:click={() => (selectedProject = project)}>
-              <span>{project.file}</span>
-              <i></i>
-            </button>
-            <pre><code>{project.code}</code></pre>
-            <div class="tags">
-              {#each project.stack as tech}
-                <span>{tech}</span>
-              {/each}
-            </div>
-            <footer>
-              <span><i></i>{project.status}</span>
-              <button type="button" on:click={() => (selectedProject = project)}>EXECUTE <Zap size={14} /></button>
-            </footer>
-          </article>
+          <ProjectCard {project} {index} onOpen={(item) => (selectedProject = item)} />
         {/each}
       </div>
     </section>
@@ -348,12 +321,10 @@
         <h2>ALEX_VANCE</h2>
         <p>Senior Full-Stack Combatant // Neural Net Specialization</p>
         <div class="stat">
-          <span class="meter-label">INTELLIGENCE (HP) <strong>942 / 1000</strong></span>
-          <div class="meter"><span style="width: 94%"></span></div>
+          <Meter label="INTELLIGENCE (HP)" value="942 / 1000" level={94} />
         </div>
         <div class="stat">
-          <span class="meter-label">CREATIVITY (MP) <strong>750 / 800</strong></span>
-          <div class="meter pink"><span style="width: 88%"></span></div>
+          <Meter label="CREATIVITY (MP)" value="750 / 800" level={88} variant="pink" />
         </div>
         <div class="mini-stats">
           <span>STR <strong>18</strong></span>
@@ -375,10 +346,7 @@
                 <div class="skill-icon">{skill.icon}</div>
                 <div>
                   <p>{skill.family}</p>
-                  <span class="meter-label">{skill.label}<strong>{skill.level}%</strong></span>
-                  <div class:meter={true} class:pink={skill.family === 'Visual Engine'}>
-                    <span style={`width:${skill.level}%`}></span>
-                  </div>
+                  <Meter label={skill.label} value={`${skill.level}%`} level={skill.level} variant={skill.family === 'Visual Engine' ? 'pink' : 'cyan'} />
                 </div>
               </article>
             {/each}
