@@ -482,9 +482,33 @@ a {
   background-size: 34px 34px, 34px 34px, auto, auto;
 }
 
+.scan-profile {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.58;
+  filter: grayscale(0.25) saturate(0.9) contrast(1.14);
+}
+
+.portrait-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0, 238, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 238, 255, 0.06) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, transparent 18%, rgba(5, 9, 10, 0.35) 62%);
+  background-size: 34px 34px, 34px 34px, auto;
+  pointer-events: none;
+}
+
 .portrait-grid p,
 .portrait-grid span {
   position: absolute;
+  z-index: 2;
   left: 10%;
   font-family: var(--mono);
   color: var(--cyan);
@@ -509,6 +533,7 @@ a {
 
 .orbit-frame {
   position: absolute;
+  z-index: 1;
   width: 280px;
   aspect-ratio: 1;
   left: 50%;
@@ -519,6 +544,7 @@ a {
 
 .scan-line {
   position: absolute;
+  z-index: 3;
   inset: 0;
   width: 38%;
   background: linear-gradient(90deg, transparent, rgba(0, 238, 255, 0.12), transparent);
@@ -726,6 +752,9 @@ pre {
 }
 
 .project-card footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
   margin-top: auto;
   padding-top: 18px;
   border-top: 1px solid var(--line);
@@ -749,15 +778,27 @@ pre {
   background: var(--card-accent, var(--cyan));
 }
 
-.project-card footer button {
+.project-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.project-card footer button,
+.project-actions a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  border: 0;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
   color: var(--card-accent);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
   font-family: var(--mono);
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
+  text-decoration: none;
 }
 
 .profile-section {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Box, Lock, Shield, Zap } from 'lucide-svelte'
+  import { Box, Code2, ExternalLink, Lock, Shield, Zap } from 'lucide-svelte'
   import type { Project } from './data'
 
   export let project: Project
@@ -30,6 +30,10 @@
   </div>
   <footer>
     <span><i></i>{project.status}</span>
-    <button type="button" on:click={() => onOpen(project)}>EXECUTE <Zap size={14} /></button>
+    <div class="project-actions">
+      <button type="button" on:click={() => onOpen(project)}>DETAILS <Zap size={14} /></button>
+      <a href={project.demo} target="_blank" rel="noreferrer"><ExternalLink size={14} /> LIVE</a>
+      <a href={project.repo} target="_blank" rel="noreferrer"><Code2 size={14} /> CODE</a>
+    </div>
   </footer>
 </article>

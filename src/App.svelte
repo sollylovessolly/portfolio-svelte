@@ -269,6 +269,7 @@
       <div class="biometric-card reveal" aria-label="Developer biometric scan">
         <div class="corner top"></div>
         <div class="portrait-grid">
+          <img class="scan-profile" src={profile.image} alt={`${profile.displayName} profile scan`} />
           <div class="orbit-frame"></div>
           <div class="scan-line"></div>
           <p>TARGET_ID: SOLLY</p>
